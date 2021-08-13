@@ -41,7 +41,7 @@ fun Application.module(testing: Boolean = false) {
             call.response.headers.append("Token", "123123123123")
 
             // show body data
-            call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
+            call.respondText("HELLO WORLD!!", contentType = ContentType.Text.Plain)
         }
 
         get("/session/increment") {
