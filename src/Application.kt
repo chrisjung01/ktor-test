@@ -3,6 +3,7 @@ package de.coli
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import com.google.gson.Gson
+import de.coli.routes.customer.customer
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.auth.jwt.*
@@ -13,10 +14,6 @@ import io.ktor.http.*
 import io.ktor.sessions.*
 import io.ktor.features.*
 import io.ktor.gson.*
-import io.ktor.client.*
-import io.ktor.client.features.json.*
-import io.ktor.client.request.*
-import kotlinx.coroutines.*
 import java.util.*
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
@@ -67,6 +64,11 @@ fun Application.module(testing: Boolean = false) {
 
 
     routing {
+        authenticate("auth-jwt") {
+            customer()
+        }
+
+
         get("/") {
             // set custom header
             call.response.headers.append("Token", "123123123123")
