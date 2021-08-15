@@ -65,7 +65,9 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         authenticate("auth-jwt") {
-            customer()
+            route("/v1") {
+                customer()
+            }
         }
 
 
